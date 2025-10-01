@@ -1,0 +1,586 @@
+/* Import matching fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+/* CSS Custom Properties for easier maintenance */
+:root {
+    --primary-color: #dc143c;
+    --secondary-color: #ff4757;
+    --background-dark: #0a0a0a;
+    --background-light: #1a1a1a;
+    --text-primary: #ffffff;
+    --border-radius-large: 20px;
+    --border-radius-medium: 16px;
+    --border-radius-small: 12px;
+    --transition-standard: 0.3s ease;
+    --font-primary: 'Inter', 'Poppins', sans-serif;
+    --font-heading: 'Space Grotesk', 'Inter', sans-serif;
+}
+
+.menu {
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--background-dark) 0%, var(--background-light) 50%, var(--background-dark) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem 2rem;
+    gap: 2rem;
+    position: relative;
+    overflow: hidden;
+    font-family: var(--font-primary);
+}
+.menu::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--primary-color), var(--secondary-color), var(--primary-color), transparent);
+    animation: menuFlow 4s ease-in-out infinite;
+}
+
+@keyframes menuFlow {
+    0%, 100% { transform: translateX(-100%); opacity: 0; }
+    50% { transform: translateX(0%); opacity: 1; }
+}
+
+.menu::after {
+    content: '';
+    position: absolute;
+    top: 20%;
+    right: -10%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(220, 20, 60, 0.1), transparent);
+    border-radius: 50%;
+    animation: pulse 6s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(0.8); opacity: 0.3; }
+    50% { transform: scale(1.2); opacity: 0.1; }
+}
+
+.menuitem {
+    width: 100%;
+    max-width: 600px;
+    height: 120px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 2rem;
+    background: rgba(26, 26, 26, 0.8);
+    border: 1px solid rgba(220, 20, 60, 0.2);
+    border-radius: var(--border-radius-large);
+    padding: 1.5rem 2rem;
+    margin: 0.5rem 0;
+    backdrop-filter: blur(15px);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.menuitem::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(220, 20, 60, 0.1), transparent);
+    transition: left 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.menuitem::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    transition: width 0.4s ease;
+}
+
+.menuitem:hover::before {
+    left: 100%;
+}
+
+.menuitem:hover::after {
+    width: 100%;
+}
+
+.menuitem:hover {
+    background: rgba(26, 26, 26, 0.95);
+    border-color: rgba(220, 20, 60, 0.5);
+    transform: translateY(-8px) translateX(8px);
+    box-shadow: 
+        0 20px 60px rgba(220, 20, 60, 0.2),
+        0 0 0 1px rgba(220, 20, 60, 0.1);
+}
+
+.menuitem:active {
+    transform: translateY(-4px) translateX(4px);
+    transition: transform 0.1s ease;
+}
+
+.menuitem a{
+    text-decoration: none;
+}
+
+.menuimg {
+    width: 80px;
+    height: 80px;
+    min-width: 80px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-radius: var(--border-radius-medium);
+    padding: 3px;
+    box-shadow: 
+        0 0 0 2px rgba(220, 20, 60, 0.3),
+        0 8px 25px rgba(220, 20, 60, 0.4);
+    transition: all var(--transition-standard);
+    position: relative;
+    overflow: hidden;
+}
+
+.menuimg::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 18px;
+    background: conic-gradient(from 0deg, var(--primary-color), var(--secondary-color), var(--primary-color));
+    z-index: -1;
+    animation: rotate 8s linear infinite;
+    opacity: 0.6;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.menuimg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 13px;
+    border: 2px solid var(--background-dark);
+    transition: all var(--transition-standard);
+}
+
+.menuitem:hover .menuimg {
+    transform: scale(1.05) rotate(2deg);
+    box-shadow: 
+        0 0 0 3px rgba(220, 20, 60, 0.5),
+        0 12px 35px rgba(220, 20, 60, 0.6);
+}
+
+.menuname {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 1rem;
+}
+
+.menuname h2 {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+    letter-spacing: -0.02em;
+    position: relative;
+    background: linear-gradient(135deg, #ffffff 0%, var(--primary-color) 50%, var(--secondary-color) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 200% 100%;
+    animation: shimmerText 4s ease-in-out infinite;
+    transition: all var(--transition-standard);
+    text-transform: capitalize;
+}
+
+@keyframes shimmerText {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.menuitem:hover .menuname h2 {
+    transform: translateX(10px);
+    text-shadow: 0 0 20px rgba(220, 20, 60, 0.8);
+}
+
+/* Loading animation for menu items */
+.menuitem {
+    animation: fadeInUp 0.6s ease-out;
+    animation-fill-mode: both;
+}
+
+.menuitem:nth-child(1) { animation-delay: 0.1s; }
+.menuitem:nth-child(2) { animation-delay: 0.2s; }
+.menuitem:nth-child(3) { animation-delay: 0.3s; }
+.menuitem:nth-child(4) { animation-delay: 0.4s; }
+.menuitem:nth-child(5) { animation-delay: 0.5s; }
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Tablet Responsive Design (iPad, larger tablets) */
+@media (max-width: 1024px) {
+    .menu {
+        padding: 3rem 2rem;
+        gap: 1.8rem;
+    }
+    
+    .menuitem {
+        height: 140px;
+        gap: 2.5rem;
+        padding: 2rem 2.5rem;
+    }
+    
+    .menuimg {
+        width: 90px;
+        height: 90px;
+        min-width: 90px;
+    }
+    
+    .menuname h2 {
+        font-size: 1.6rem;
+    }
+}
+
+/* Large Mobile/Small Tablet (768px and below) */
+@media (max-width: 768px) {
+    .menu {
+        padding: 2.5rem 1.5rem;
+        gap: 2rem;
+        justify-content: flex-start;
+        padding-top: 4rem;
+    }
+    
+    .menuitem {
+        max-width: 100%;
+        height: 140px; /* Increased from 100px */
+        gap: 2rem;
+        padding: 2rem 2rem; /* Increased padding */
+        border-radius: 18px;
+        margin: 1rem 0; /* Increased margin between items */
+    }
+    
+    .menuimg {
+        width: 85px; /* Increased from 60px */
+        height: 85px;
+        min-width: 85px;
+        border-radius: 15px;
+    }
+    
+    .menuimg::before {
+        border-radius: 17px;
+    }
+    
+    .menuimg img {
+        border-radius: 12px;
+    }
+    
+    .menuname h2 {
+        font-size: 1.4rem; /* Increased from 1.2rem */
+        font-weight: 700; /* Made bolder */
+    }
+    
+    .menuitem:hover {
+        transform: translateY(-6px) translateX(6px);
+    }
+    
+    /* Reduce background decorations on mobile */
+    .menu::after {
+        width: 200px;
+        height: 200px;
+        right: -5%;
+        top: 10%;
+    }
+}
+
+/* Standard Mobile (480px and below) */
+@media (max-width: 480px) {
+    .menu {
+        padding: 2rem 1rem;
+        gap: 1.5rem;
+        padding-top: 3rem;
+    }
+    
+    .menuitem {
+        height: 120px; /* Increased from 80px */
+        gap: 1.5rem;
+        padding: 1.5rem 1.5rem; /* Increased padding */
+        border-radius: 15px;
+        margin: 0.8rem 0;
+    }
+    
+    .menuimg {
+        width: 75px; /* Increased from 50px */
+        height: 75px;
+        min-width: 75px;
+        border-radius: 12px;
+    }
+    
+    .menuimg::before {
+        border-radius: 14px;
+    }
+    
+    .menuimg img {
+        border-radius: 9px;
+    }
+    
+    .menuname h2 {
+        font-size: 1.25rem; /* Increased from 1rem */
+        font-weight: 700;
+        line-height: 1.3;
+    }
+    
+    .menuname {
+        padding-left: 1rem; /* Increased from 0.5rem */
+    }
+    
+    .menuitem:hover {
+        transform: translateY(-4px) translateX(4px);
+    }
+    
+    /* Simplify animations on small screens for better performance */
+    .menuimg::before {
+        animation: none;
+    }
+    
+    .menu::after {
+        display: none; /* Hide decorative element on very small screens */
+    }
+}
+
+/* Very Small Mobile (360px and below) */
+@media (max-width: 360px) {
+    .menu {
+        padding: 1.5rem 0.8rem;
+        gap: 1.2rem;
+    }
+    
+    .menuitem {
+        height: 110px;
+        gap: 1.2rem;
+        padding: 1.3rem 1.2rem;
+        margin: 0.6rem 0;
+    }
+    
+    .menuimg {
+        width: 70px;
+        height: 70px;
+        min-width: 70px;
+    }
+    
+    .menuname h2 {
+        font-size: 1.1rem;
+    }
+}
+
+/* Touch-friendly improvements for all mobile devices */
+@media (hover: none) {
+    .menuitem:hover {
+        transform: none;
+        background: rgba(26, 26, 26, 0.8);
+        border-color: rgba(220, 20, 60, 0.2);
+    }
+    
+    .menuitem:active {
+        transform: scale(0.98);
+        background: rgba(26, 26, 26, 0.9);
+        border-color: rgba(220, 20, 60, 0.4);
+        transition: all 0.1s ease;
+    }
+    
+    .menuitem:hover .menuimg {
+        transform: none;
+    }
+    
+    .menuitem:hover .menuname h2 {
+        transform: none;
+    }
+}
+
+/* Focus states for accessibility */
+.menuitem:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 4px;
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Custom scrollbar for menu area */
+.menu::-webkit-scrollbar {
+    width: 8px;
+}
+
+.menu::-webkit-scrollbar-track {
+    background: rgba(26, 26, 26, 0.5);
+    border-radius: 4px;
+}
+
+.menu::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--primary-color), var(--secondary-color));
+    border-radius: 4px;
+}
+
+.menu::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, var(--secondary-color), var(--primary-color));
+}
+
+/* Landscape mobile optimization */
+@media (max-height: 500px) and (orientation: landscape) {
+    .menu {
+        min-height: auto;
+        padding: 2rem 1rem;
+        justify-content: center;
+    }
+    
+    .menuitem {
+        height: 90px;
+        margin: 0.5rem 0;
+    }
+    
+    .menuimg {
+        width: 60px;
+        height: 60px;
+        min-width: 60px;
+    }
+    
+    .menuname h2 {
+        font-size: 1.1rem;
+    }
+}
+
+/* ===================== */
+/* DARK & LIGHT MODE BASE */
+/* ===================== */
+
+.menu.dark {
+  background: linear-gradient(
+    135deg,
+    var(--background-dark) 0%,
+    var(--background-light) 50%,
+    var(--background-dark) 100%
+  );
+  color: var(--text-primary);
+}
+
+.menu.light {
+  background: linear-gradient(
+    135deg,
+    #ffffff 0%,
+    #f8f9fa 50%,
+    #ffffff 100%
+  );
+  color: #111827;
+}
+
+/* ===================== */
+/* MENU ITEM DARK/LIGHT  */
+/* ===================== */
+
+.menu.dark .menuitem {
+  background: rgba(26, 26, 26, 0.85);
+  border: 1px solid rgba(220, 20, 60, 0.3);
+}
+
+.menu.dark .menuitem:hover {
+  background: rgba(26, 26, 26, 0.95);
+  border-color: rgba(220, 20, 60, 0.5);
+  box-shadow: 0 20px 60px rgba(220, 20, 60, 0.2),
+              0 0 0 1px rgba(220, 20, 60, 0.1);
+}
+
+.menu.light .menuitem {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  box-shadow: 0 4px 20px rgba(239, 68, 68, 0.05);
+}
+
+.menu.light .menuitem:hover {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(239, 68, 68, 0.5);
+  box-shadow: 0 20px 60px rgba(239, 68, 68, 0.2),
+              0 0 0 1px rgba(239, 68, 68, 0.1);
+}
+
+/* ===================== */
+/* TEXT ADAPTATION       */
+/* ===================== */
+
+.menu.dark .menuname h2 {
+  color: var(--text-primary);
+  background: linear-gradient(
+    135deg,
+    #ffffff 0%,
+    var(--primary-color) 50%,
+    var(--secondary-color) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.menu.light .menuname h2 {
+  background: linear-gradient(
+    135deg,
+    #111827 0%,
+    var(--primary-color) 50%,
+    var(--secondary-color) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ===================== */
+/* IMAGE WRAPPER ADAPT   */
+/* ===================== */
+
+.menu.dark .menuimg img {
+  border: 2px solid var(--background-dark);
+}
+
+.menu.light .menuimg img {
+  border: 2px solid #f3f4f6; /* light gray for contrast */
+}
+
+/* ===================== */
+/* SCROLLBAR DARK/LIGHT  */
+/* ===================== */
+
+.menu.dark::-webkit-scrollbar-track {
+  background: rgba(26, 26, 26, 0.5);
+}
+
+.menu.dark::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--primary-color), var(--secondary-color));
+}
+
+.menu.light::-webkit-scrollbar-track {
+  background: rgba(243, 244, 246, 0.6);
+}
+
+.menu.light::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--secondary-color), var(--primary-color));
+}
