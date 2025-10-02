@@ -1,8 +1,19 @@
-/* home.module.css */
+/* =========================
+   Home Container
+========================= */
 .home {
   width: 100%;
-  height: 775px;
-  transition: background-color 0.3s ease;
+  min-height: calc(100vh - 80px);
+  margin-top: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  gap: 3rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
 
 .home.dark {
@@ -12,3 +23,531 @@
 .home.light {
   background-color: #ffffff;
 }
+
+/* Decorative background elements */
+.home::before {
+  content: '';
+  position: absolute;
+  top: 20%;
+  right: -10%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(220, 38, 38, 0.08), transparent);
+  border-radius: 50%;
+  animation: float 15s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.home::after {
+  content: '';
+  position: absolute;
+  bottom: 10%;
+  left: -10%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(220, 38, 38, 0.05), transparent);
+  border-radius: 50%;
+  animation: float 20s ease-in-out infinite reverse;
+  pointer-events: none;
+}
+
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -30px) scale(1.1); }
+  66% { transform: translate(-20px, 20px) scale(0.9); }
+}
+
+/* =========================
+   Home Main Section
+========================= */
+.homemain {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 1rem;
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+}
+
+.homemain h1 {
+  font-size: 3.5rem;
+  font-weight: 400;
+  margin: 0;
+  font-family: 'Courier New', Courier, monospace;
+  letter-spacing: 0.02em;
+  animation: slideInDown 0.8s ease-out;
+}
+
+.home.dark .homemain h1 {
+  color: #ffffff;
+  text-shadow: 0 0 40px rgba(220, 38, 38, 0.3);
+}
+
+.home.light .homemain h1 {
+  color: #111827;
+  text-shadow: 0 0 30px rgba(239, 68, 68, 0.2);
+}
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Rotating text container */
+.homemain h3 {
+  font-size: 2rem;
+  font-weight: 400;
+  margin: 0;
+  font-family: 'Courier New', Courier, monospace;
+  letter-spacing: 0.02em;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+.home.dark .homemain h3 {
+  color: #dc2626;
+  text-shadow: 0 0 20px rgba(220, 38, 38, 0.4);
+}
+
+.home.light .homemain h3 {
+  color: #ef4444;
+  text-shadow: 0 0 15px rgba(239, 68, 68, 0.3);
+}
+
+/* Hide all h3 except the first one initially */
+.homemain h3 {
+  animation: rotateText 4s infinite;
+}
+
+.homemain h3:nth-of-type(2) {
+  animation-delay: 2s;
+  opacity: 0;
+}
+
+@keyframes rotateText {
+  0%, 45% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+  50%, 95% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-20px) scale(0.8);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(20px) scale(0.8);
+  }
+}
+
+.homemain h5 {
+  font-size: 1.25rem;
+  font-weight: 400;
+  margin: 3rem 0 0 0;
+  font-family: 'Courier New', Courier, monospace;
+  letter-spacing: 0.02em;
+}
+
+.home.dark .homemain h5 {
+  color: #9ca3af;
+}
+
+.home.light .homemain h5 {
+  color: #6b7280;
+}
+
+/* =========================
+   Home Sub Section (Buttons)
+========================= */
+.homesub {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+  animation: slideInUp 1s ease-out 0.3s both;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.homesub button {
+  padding: 0.875rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
+  border: 2px solid;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  min-width: 140px;
+}
+
+/* Dark mode buttons */
+.home.dark .homesub button {
+  background-color: transparent;
+  border-color: #dc2626;
+  color: #ffffff;
+  box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
+}
+
+.home.dark .homesub button:hover {
+  background-color: #dc2626;
+  border-color: #dc2626;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(220, 38, 38, 0.5);
+}
+
+/* Light mode buttons */
+.home.light .homesub button {
+  background-color: transparent;
+  border-color: #ef4444;
+  color: #111827;
+  box-shadow: 0 4px 15px rgba(239, 68, 68, 0.2);
+}
+
+.home.light .homesub button:hover {
+  background-color: #ef4444;
+  border-color: #ef4444;
+  color: #ffffff;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(239, 68, 68, 0.4);
+}
+
+.homesub button:active {
+  transform: translateY(-1px) scale(0.98);
+}
+
+/* Button ripple effect */
+.homesub button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.homesub button:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+/* =========================
+   Tablet Styles
+========================= */
+@media (max-width: 768px) {
+  .home {
+    min-height: calc(100vh - 65px);
+    margin-top: 65px;
+    padding: 3rem 1.5rem;
+    gap: 2.5rem;
+  }
+
+  .homemain h1 {
+    font-size: 2.5rem;
+  }
+
+  .homemain h3 {
+    font-size: 1.5rem;
+  }
+
+  .homemain h5 {
+    font-size: 1.125rem;
+    margin-top: 2.5rem;
+  }
+
+  .homesub {
+    gap: 1.25rem;
+  }
+
+  .homesub button {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9375rem;
+    min-width: 120px;
+  }
+}
+
+/* =========================
+   Mobile Styles
+========================= */
+@media (max-width: 480px) {
+  .home {
+    min-height: calc(100vh - 60px);
+    margin-top: 60px;
+    padding: 2rem 1rem;
+    gap: 2rem;
+  }
+
+  .homemain h1 {
+    font-size: 2rem;
+  }
+
+  .homemain h3 {
+    font-size: 1.25rem;
+  }
+
+  .homemain h5 {
+    font-size: 1rem;
+    margin-top: 2rem;
+  }
+
+  .homesub {
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .homesub button {
+    width: 60%;
+    padding: 0.675rem 0.85rem;
+    font-size: 0.8375rem;
+    min-width: unset;
+  }
+}
+
+/* =========================
+   Extra Small Mobile
+========================= */
+@media (max-width: 360px) {
+  .home {
+    padding: 1.5rem 1rem;
+  }
+
+  .homemain h1 {
+    font-size: 1.75rem;
+  }
+
+  .homemain h3 {
+    font-size: 1.125rem;
+  }
+
+  .homemain h5 {
+    font-size: 0.9375rem;
+    margin-top: 1.75rem;
+  }
+
+  .homesub {
+    max-width: 280px;
+  }
+
+  .homesub button {
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+  }
+}
+
+/* =========================
+   Popup Styles
+========================= */
+.popupOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+  animation: fadeIn 0.3s ease-out;
+  backdrop-filter: blur(4px);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.popupContent {
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 2.5rem;
+  max-width: 800px;
+  max-height: 85vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.home.dark .popupContent {
+  background-color: #1a1a1a;
+  box-shadow: 0 20px 60px rgba(220, 38, 38, 0.3);
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.closeBtn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 2.5rem;
+  cursor: pointer;
+  color: #6b7280;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  line-height: 1;
+  padding: 0;
+}
+
+.closeBtn:hover {
+  background-color: #f3f4f6;
+  color: #111827;
+  transform: rotate(90deg);
+}
+
+.home.dark .closeBtn {
+  color: #9ca3af;
+}
+
+.home.dark .closeBtn:hover {
+  background-color: #2a2a2a;
+  color: #ffffff;
+}
+
+.popupTitle {
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 0 0 1.5rem 0;
+  font-family: 'Courier New', Courier, monospace;
+  color: #111827;
+}
+
+.home.dark .popupTitle {
+  color: #ffffff;
+}
+
+.board {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.paragraph {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #4b5563;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
+  text-align: justify;
+}
+
+.home.dark .paragraph {
+  color: #d1d5db;
+}
+
+/* Scrollbar styling for popup */
+.popupContent::-webkit-scrollbar {
+  width: 8px;
+}
+
+.popupContent::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.home.dark .popupContent::-webkit-scrollbar-track {
+  background: #2a2a2a;
+}
+
+.popupContent::-webkit-scrollbar-thumb {
+  background: #dc2626;
+  border-radius: 10px;
+}
+
+.popupContent::-webkit-scrollbar-thumb:hover {
+  background: #b91c1c;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .popupContent {
+    padding: 2rem 1.5rem;
+    max-width: 95%;
+  }
+
+  .popupTitle {
+    font-size: 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .paragraph {
+    font-size: 0.9375rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .popupContent {
+    padding: 1.5rem 1rem;
+    border-radius: 12px;
+  }
+
+  .closeBtn {
+    top: 0.75rem;
+    right: 0.75rem;
+    font-size: 2rem;
+    width: 35px;
+    height: 35px;
+  }
+
+  .popupTitle {
+    font-size: 1.25rem;
+  }
+
+  .paragraph {
+    font-size: 0.875rem;
+    line-height: 1.6;
+  }
+}
+

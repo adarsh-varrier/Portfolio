@@ -1,14 +1,9 @@
-import React, { useState } from 'react'
+
 import Homebar from './homebar';
 import Footer from './footer';
 import Education from './education';
 
-export default function Eduflex() {
-  const [isDark, setIsDark] = useState(true);
-
-  const toggleTheme = () => {
-    setIsDark(!isDark);
-  };
+export default function Eduflex({ isDark, toggleTheme }) {
 
   return (
     <div className={isDark ? 'dark-mode' : 'light-mode'}>
