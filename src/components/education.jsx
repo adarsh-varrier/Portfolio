@@ -1,13 +1,11 @@
 import React from 'react'
 import { FaGraduationCap, FaHome } from "react-icons/fa";
-import Homebar from './homebar';
-import Footer from './footer';
 import css from '../css/education.module.css';
 
 export default function Education({ isDark }) {
   return (
         <div className={`${css.edu} ${isDark ? css.dark : css.light}`}>
-            <a href="/" className={css.homeIcon}><FaHome size={24} /></a>
+            <a href="/#menu" className={css.homeIcon}><FaHome size={24} /></a>
             <div className={css.card}>
                 <div className={css.imgContainer}>
                     <img src="mca1.jpg" alt="mca" />

@@ -6,23 +6,27 @@ export default function Menu({ isDark }) {
     <div className={`${css.menu} ${isDark ? css.dark : css.light}`}>
         <div className={css.menuitem}>
             <div className={css.menuimg}>
-                <img src="menu1.1.png" alt="menu-img" />
+                <img src="menu1.3.png" alt="menu-img" />
             </div>
-            <div className={css.menuname}>
-                <h2>Work Experiance</h2>
-            </div>
+            <a href="/work">
+                <div className={css.menuname}>
+                    <h2>Work Experience</h2>
+                </div>
+            </a>
         </div>
         <div className={css.menuitem}>
             <div className={css.menuimg}>
                 <img src="menu1.1.png" alt="menu-img" />
             </div>
-            <div className={css.menuname}>
-                <h2>Projects</h2>
-            </div>
+            <a href="/project">
+                <div className={css.menuname}>
+                    <h2>Projects</h2>
+                </div>
+            </a>
         </div>
         <div className={css.menuitem}>
             <div className={css.menuimg}>
-                <img src="menu1.2.png" alt="menu-img" />
+                <img src="scholar1.png" alt="menu-img" />
             </div>
             <a href="/edu">
                 <div className={css.menuname}>
@@ -32,19 +36,23 @@ export default function Menu({ isDark }) {
         </div>
         <div className={css.menuitem}>
             <div className={css.menuimg}>
-                <img src="menu1.3.png" alt="menu-img" />
+                <img src="menu1.2.png" alt="menu-img" />
             </div>
-            <div className={css.menuname}>
-                <h2>Out of the box</h2>
-            </div>
+            <a href="/oob">
+                <div className={css.menuname}>
+                    <h2>Out of the box</h2>
+                </div>
+            </a>
         </div>
         <div className={css.menuitem}>
             <div className={css.menuimg}>
-                <img src="menu1.3.png" alt="menu-img" />
+                <img src="certificates.png" alt="menu-img" />
             </div>
+            <a href="/certificates">
             <div className={css.menuname}>
                 <h2>certificates</h2>
             </div>
+            </a>
         </div>
       </div>
   )

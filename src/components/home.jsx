@@ -1,8 +1,10 @@
 // Home.jsx
 import React, { useState } from 'react';
 import css from '../css/home.module.css';
+import { useNavigate } from "react-router-dom";
 
 export default function Home({ isDark, scrollToMenu }) {
+  const navigate = useNavigate();
   const [showAbout,setShowAbout] = useState(false);
   return (
     <div className={`${css.home} ${isDark ? css.dark : css.light}`}>
@@ -17,7 +19,7 @@ export default function Home({ isDark, scrollToMenu }) {
       </div>
       <div className={css.homesub}>
         <button onClick={()=>setShowAbout(true)}>About me</button>
-        <button>Let's Connect</button>
+        <button onClick={() => navigate("/contact")}>Let's Connect</button>
         <button onClick={scrollToMenu}>My Journey</button>
       </div>
       {/* About Me Popup */}

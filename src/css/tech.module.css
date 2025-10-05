@@ -1,0 +1,467 @@
+/* =========================
+   Technologies Container
+========================= */
+.tech {
+  width: 100%;
+  min-height: 100vh;
+  padding: 6rem 2rem 4rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.tech.dark {
+  background-color: #000000;
+}
+
+.tech.light {
+  background-color: #ffffff;
+}
+
+/* Decorative background elements */
+.tech::before {
+  content: '';
+  position: absolute;
+  top: 10%;
+  left: -5%;
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(220, 38, 38, 0.06), transparent);
+  border-radius: 50%;
+  animation: floatTech 18s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.tech::after {
+  content: '';
+  position: absolute;
+  bottom: 15%;
+  right: -5%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(220, 38, 38, 0.04), transparent);
+  border-radius: 50%;
+  animation: floatTech 22s ease-in-out infinite reverse;
+  pointer-events: none;
+}
+
+@keyframes floatTech {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(25px, -25px) scale(1.05); }
+  66% { transform: translate(-15px, 15px) scale(0.95); }
+}
+
+/* =========================
+   Header Section
+========================= */
+.head {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  animation: slideInDown 0.8s ease-out;
+}
+
+.head h3 {
+  font-size: 3rem;
+  font-weight: 600;
+  margin: 0;
+  font-family: 'Courier New', Courier, monospace;
+  letter-spacing: 0.05em;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 1rem;
+}
+
+.tech.dark .head h3 {
+  color: #ffffff;
+  text-shadow: 0 0 30px rgba(220, 38, 38, 0.4);
+}
+
+.tech.light .head h3 {
+  color: #111827;
+  text-shadow: 0 0 20px rgba(239, 68, 68, 0.2);
+}
+
+/* Underline effect */
+.head h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #dc2626, transparent);
+  border-radius: 2px;
+}
+
+.tech.light .head h3::after {
+  background: linear-gradient(90deg, transparent, #ef4444, transparent);
+}
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================
+   Body Section
+========================= */
+.body {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* =========================
+   Section (Each Category)
+========================= */
+.section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  animation: fadeInUp 0.8s ease-out;
+  animation-fill-mode: both;
+}
+
+.section:nth-child(1) { animation-delay: 0.1s; }
+.section:nth-child(2) { animation-delay: 0.2s; }
+.section:nth-child(3) { animation-delay: 0.3s; }
+.section:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================
+   Icon Cards
+========================= */
+.icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1.5rem 1rem;
+  width: 140px;
+  border-radius: 16px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Dark mode card */
+.tech.dark .icon {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(220, 38, 38, 0.2);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.tech.dark .icon:hover {
+  background: rgba(220, 38, 38, 0.1);
+  border-color: rgba(220, 38, 38, 0.4);
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 12px 30px rgba(220, 38, 38, 0.3);
+}
+
+/* Light mode card */
+.tech.light .icon {
+  background: rgba(0, 0, 0, 0.02);
+  border: 1px solid rgba(239, 68, 68, 0.15);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.tech.light .icon:hover {
+  background: rgba(239, 68, 68, 0.05);
+  border-color: rgba(239, 68, 68, 0.3);
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 12px 30px rgba(239, 68, 68, 0.2);
+}
+
+/* Icon glow effect on hover */
+.icon::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(220, 38, 38, 0.1), transparent);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+  pointer-events: none;
+}
+
+.icon:hover::before {
+  width: 200px;
+  height: 200px;
+}
+
+/* SVG Icon styling */
+.icon svg {
+  transition: all 0.3s ease;
+}
+
+.tech.dark .icon svg {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5)) brightness(1.2);
+}
+
+.tech.light .icon svg {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.tech.dark .icon:hover svg {
+  transform: scale(1.1);
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.6)) brightness(1.3);
+}
+
+.tech.light .icon:hover svg {
+  transform: scale(1.1);
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+}
+
+/* Text styling */
+.icon p {
+  margin: 0;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
+  letter-spacing: 0.02em;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.tech.dark .icon p {
+  color: #e5e7eb;
+}
+
+.tech.light .icon p {
+  color: #374151;
+}
+
+.icon:hover p {
+  font-weight: 700;
+}
+
+.tech.dark .icon:hover p {
+  color: #ffffff;
+}
+
+.tech.light .icon:hover p {
+  color: #111827;
+}
+
+/* =========================
+   Tablet Styles
+========================= */
+@media (max-width: 1024px) {
+  .tech {
+    padding: 5rem 2rem 3rem 2rem;
+    gap: 2.5rem;
+  }
+
+  .head h3 {
+    font-size: 2.8rem;
+  }
+
+  .body {
+    gap: 2.5rem;
+  }
+
+  .section {
+    gap: 1.8rem;
+  }
+
+  .icon {
+    width: 130px;
+  }
+}
+
+@media (max-width: 768px) {
+  .tech {
+    padding: 5rem 1.5rem 3rem 1.5rem;
+    gap: 2.5rem;
+  }
+
+  .head h3 {
+    font-size: 2.5rem;
+  }
+
+  .body {
+    gap: 2.5rem;
+  }
+
+  .section {
+    gap: 1.5rem;
+  }
+
+  .icon {
+    width: 120px;
+    padding: 1.25rem 0.875rem;
+  }
+
+  .icon svg {
+    width: 35px;
+    height: 35px;
+  }
+
+  .icon p {
+    font-size: 0.875rem;
+  }
+}
+
+/* =========================
+   Mobile Styles
+========================= */
+@media (max-width: 480px) {
+  .tech {
+    padding: 4rem 1rem 2.5rem 1rem;
+    gap: 2rem;
+  }
+
+  .head h3 {
+    font-size: 2rem;
+  }
+
+  .body {
+    gap: 2rem;
+  }
+
+  .section {
+    gap: 1.25rem;
+  }
+
+  .icon {
+    width: 100px;
+    padding: 1rem 0.75rem;
+    border-radius: 12px;
+  }
+
+  .icon svg {
+    width: 32px;
+    height: 32px;
+  }
+
+  .icon p {
+    font-size: 0.8125rem;
+  }
+
+  .icon:hover {
+    transform: translateY(-5px) scale(1.03);
+  }
+}
+
+/* =========================
+   Extra Small Mobile
+========================= */
+@media (max-width: 360px) {
+  .tech {
+    padding: 3.5rem 0.75rem 2rem 0.75rem;
+  }
+
+  .head h3 {
+    font-size: 1.75rem;
+  }
+
+  .section {
+    gap: 1rem;
+  }
+
+  .icon {
+    width: 90px;
+    padding: 0.875rem 0.625rem;
+  }
+
+  .icon svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .icon p {
+    font-size: 0.75rem;
+  }
+}
+
+/* Touch-friendly improvements for mobile */
+@media (hover: none) {
+  .icon:hover {
+    transform: none;
+    background: rgba(255, 255, 255, 0.03);
+    border-color: rgba(220, 38, 38, 0.2);
+  }
+  
+  .tech.dark .icon:active {
+    transform: scale(0.98);
+    background: rgba(220, 38, 38, 0.15);
+    border-color: rgba(220, 38, 38, 0.5);
+    transition: all 0.1s ease;
+  }
+  
+  .tech.light .icon:active {
+    transform: scale(0.98);
+    background: rgba(239, 68, 68, 0.1);
+    border-color: rgba(239, 68, 68, 0.5);
+    transition: all 0.1s ease;
+  }
+  
+  .icon:hover svg {
+    transform: none;
+  }
+}
+
+/* Landscape mobile optimization */
+@media (max-height: 500px) and (orientation: landscape) {
+  .tech {
+    min-height: auto;
+    padding: 2rem 1rem;
+  }
+  
+  .head h3 {
+    font-size: 1.8rem;
+  }
+  
+  .body {
+    gap: 2rem;
+  }
+  
+  .section {
+    gap: 1rem;
+  }
+  
+  .icon {
+    width: 90px;
+    padding: 0.75rem 0.5rem;
+  }
+  
+  .icon svg {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .icon p {
+    font-size: 0.75rem;
+  }
+}
